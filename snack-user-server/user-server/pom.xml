@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.yc</groupId>
+    <artifactId>snack-user-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>user-server</artifactId>
+  <name>user-server</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <user-common.version>0.0.1-SNAPSHOT</user-common.version>
+    <user-view.version>0.0.1-SNAPSHOT</user-view.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>snack-pom-server</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>user-common</artifactId>
+      <version>${user-common.version}</version>
+    </dependency>
+    
+     <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>user-view</artifactId>
+      <version>${user-view.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  	<finalName>user-server</finalName>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-maven-plugin</artifactId>
+  			<configuration>
+  				<mainClass>com.yc.snack.user.UserServerStartApplication</mainClass>
+  			</configuration>
+  			<executions>
+  				<execution>
+  					<goals>
+  						<goal>repackage</goal>
+  					</goals>
+  				</execution>
+  			</executions>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

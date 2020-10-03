@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.yc</groupId>
+    <artifactId>snack-product-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>product-server</artifactId>
+  <name>product-server</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <product-common.version>0.0.1-SNAPSHOT</product-common.version>
+    <product-view.version>0.0.1-SNAPSHOT</product-view.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>snack-pom-server</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>product-common</artifactId>
+      <version>${product-common.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.yc</groupId>
+      <artifactId>product-view</artifactId>
+      <version>${product-view.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  	<finalName>product-server</finalName>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-maven-plugin</artifactId>
+  			<configuration>
+  				<mainClass>com.yc.snack.product.ProductServerStartApplication</mainClass>
+  			</configuration>
+  			<executions>
+  				<execution>
+  					<goals>
+  						<goal>repackage</goal>
+  					</goals>
+  				</execution>
+  			</executions>
+  		</plugin>
+  	</plugins>    	
+  </build>
+</project>

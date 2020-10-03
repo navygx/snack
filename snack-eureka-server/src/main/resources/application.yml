@@ -1,0 +1,25 @@
+spring:
+   profiles:
+      active: dev-6611
+      
+---
+server:
+   port: 6611
+   
+spring:
+   profiles: dev-6611
+   application: 
+      name: eureka-server
+   security:
+      user:
+         name: navy
+         password: 123321
+         
+eureka:
+   instance: 
+      hostname: 127.0.0.1
+   client:
+      register-with-eureka: false
+      fetch-registry: false
+      service-url:
+         defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka

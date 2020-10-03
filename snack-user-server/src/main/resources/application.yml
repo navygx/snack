@@ -1,0 +1,48 @@
+spring:
+   profiles:
+      active: dev-6633
+
+---
+server:
+   port: 6633
+   
+spring:
+   profiles: dev-6633
+   application: 
+      name: user-server
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/snack_user?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: root
+   http:
+      encoding: 
+         charset: utf-8
+         force: true
+         enabled: true
+         
+   mail:
+      protocol: smtp
+      username: 3155822880@qq.com
+      password: GX3155822880
+      port: 465
+      host: smtp.qq.com
+      properties:
+         mail:
+            smtp:
+               auth: true
+               timeout: 2500
+               ssl:
+                  enable: true
+                
+mybatis:
+   mapper-locations: mapper/*Mapper.xml
+   type-aliases-package: com.yc.snack.user.bean
+   
+eureka:
+   client: 
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6611/eureka
+   
+      

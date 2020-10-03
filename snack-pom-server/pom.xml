@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yc</groupId>
+  <artifactId>snack-pom-server</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.6.RELEASE</version>
+  	<!--  <version>2.2.6.RELEASE</version>-->
+  	<relativePath></relativePath>
+  </parent>
+  
+  <properties>
+  	<java.version>1.8</java.version>
+  	<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+  	<!-- <spring-cloud.version>Hoxton.SR4</spring-cloud.version> -->
+  	<spring.build.sourceEncoding>UTF-8</spring.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-websocket</artifactId>
+  	</dependency>
+  	
+  	<!-- mysql -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  	</dependency>
+  	
+  	<!-- springboot 整合 mybatis -->
+  	<dependency>
+  		<groupId>org.mybatis.spring.boot</groupId>
+  		<artifactId>mybatis-spring-boot-starter</artifactId>
+  		<version>2.0.0</version>
+  	</dependency>
+  	
+  	<!-- mybatis缓存依赖包 -->
+  	<dependency>
+  		<groupId>org.mybatis.caches</groupId>
+  		<artifactId>mybatis-ehcache</artifactId>
+  		<version>1.1.0</version>
+  	</dependency>
+  	
+  	<!-- 数据库连接池 -->
+  	<dependency>
+  		<groupId>com.alibaba</groupId>
+  		<artifactId>druid</artifactId>
+  		<version>1.1.10</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-mail</artifactId>
+  	</dependency>
+  	
+  	<!-- 邮件发送的包 -->
+  	<dependency>
+  		<groupId>javax.mail</groupId>
+  		<artifactId>mail</artifactId>
+  		<version>1.4.7</version>
+  	</dependency>
+  	
+  	<!-- eureka注册 -->
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  	</dependency>
+  	
+  	<!-- spring boot session管理 
+  	<dependency>
+  		<groupId>org.springframework.session</groupId>
+  		<artifactId>spring-session-data-redis</artifactId>
+  	</dependency>-->
+  	
+  	<!-- 使用zipkin的时候总是会报一些redis连接超时的错误，因为是默认带的lettuce，我们改成jedis访问 
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-data-redis</artifactId>
+  		<exclusions>
+  			<exclusion>
+  				<groupId>io.lettuce</groupId>
+  				<artifactId>lettuce-core</artifactId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>redis.clients</groupId>
+  		<artifactId>jedis</artifactId>
+  	</dependency>-->
+  	
+  	<!-- 从配置中心读取配置文件的依赖包 
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-config</artifactId>
+  	</dependency>-->
+  	
+  	<!-- 仪表盘，监控降级和熔断的
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+  	</dependency> -->
+  	
+  	<!-- feign,服务之间调用用的
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-openfeign</artifactId>
+  	</dependency> -->
+  	
+  	<!-- 消息中间件 
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-amqp</artifactId>
+  	</dependency>-->
+  	
+  	<!-- stream 为微服务应用构建消息驱动能力框架 
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+  	</dependency>-->
+  	
+  	<!-- bus总线 
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-actuator</artifactId>
+  	</dependency>-->
+  	
+  	<!-- 用来呈现sleuth的这些路由信息 
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-zipkin</artifactId>
+  	</dependency>-->
+	
+  </dependencies>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-dependencies</artifactId>
+  			<version>${spring-cloud.version}</version>
+  			<type>pom</type>
+  			<scope>import</scope>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+</project>

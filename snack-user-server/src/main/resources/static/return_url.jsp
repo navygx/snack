@@ -1,6 +1,6 @@
 <%@page import="com.yc.snacknet.biz.impl.OrderInfoBizImpl"%>
 <%@page import="com.yc.snacknet.biz.IOrderInfoBiz"%>
-<%@page import="com.yc.snacknet.controller.AlipayConfig"%>
+<%@page import="com.yc.snack.order.controller.AlipayConfig"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>

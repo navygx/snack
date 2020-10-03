@@ -9,7 +9,7 @@ server:
 spring:
    profiles: dev-6644
    application: 
-      name: user-server
+      name: product-server
    datasource:
       driverClassName: com.mysql.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/snack_product?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
@@ -21,24 +21,10 @@ spring:
          charset: utf-8
          force: true
          enabled: true
-         
-   mail:
-      protocol: smtp
-      username: 3155822880@qq.com
-      password: GX3155822880
-      port: 465
-      host: smtp.qq.com
-      properties:
-         mail:
-            smtp:
-               auth: true
-               timeout: 2500
-               ssl:
-                  enable: true
                 
 mybatis:
    mapper-locations: mapper/*Mapper.xml
-   type-aliases-package: com.yc.snack.user.bean
+   type-aliases-package: com.yc.snack.product.bean
    
 eureka:
    client: 

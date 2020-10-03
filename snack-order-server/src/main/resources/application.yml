@@ -1,18 +1,18 @@
 spring:
    profiles:
-      active: dev-6633
+      active: dev-6655
 
 ---
 server:
-   port: 6633
+   port: 6655
    
 spring:
-   profiles: dev-6633
+   profiles: dev-6655
    application: 
-      name: user-server
+      name: order-server
    datasource:
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/snack_user?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://127.0.0.1:3306/snack_order?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
       type: com.alibaba.druid.pool.DruidDataSource
       username: root
       password: root
@@ -21,7 +21,7 @@ spring:
          charset: utf-8
          force: true
          enabled: true
-
+         
    mail:
       protocol: smtp
       username: 3155822880@qq.com
@@ -38,7 +38,7 @@ spring:
                 
 mybatis:
    mapper-locations: mapper/*Mapper.xml
-   type-aliases-package: com.yc.snack.user.bean
+   type-aliases-package: com.yc.snack.order.bean
    
 eureka:
    client: 

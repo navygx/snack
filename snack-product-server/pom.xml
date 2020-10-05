@@ -9,11 +9,6 @@
 
   <name>snack-product-server</name>
   <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-  </properties>
   
   <parent>
   	<groupId>org.springframework.boot</groupId>
@@ -22,6 +17,11 @@
   	<!--  <version>2.2.6.RELEASE</version>-->
   	<relativePath></relativePath>
   </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+  </properties>
   
   <modules>
     <module>product-server</module>

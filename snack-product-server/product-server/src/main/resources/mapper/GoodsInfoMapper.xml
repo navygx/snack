@@ -2,126 +2,148 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="com.yc.snack.propduct.mapper.IGoodsInfoMapper">
- 	<insert id="add" parameterType="GoodsInfo">
- 		insert into goodsinfo values(0,#{gname},#{gno},#{price},#{intro},#{balance},#{unit},
- 		#{qperied},#{weight},#{descr},#{status})
- 	</insert>
- 	
- 	<update id="update" parameterType="GoodsInfo">
- 		update goodsinfo set gname=#{gname},tno=#{tno},price=#{price},intro=#{intro},balance=#{balance},unit=#{unit},
- 		qperied=#{qperied},weight=#{weight},descr=#{descr} where gno=#{go}
- 	</update>
- 	
- 	<select id="findByGid" resultType="GoodsInfo" parameterType="string">
- 		select gno, gname, g.tno, tname, price, balance, unit, qperied, weight, g.status, intro, pics, descr 
+
+<mapper namespace="com.yc.snack.product.mapper.IGoodsInfoMapper">
+	<insert id="add" parameterType="GoodsInfo">
+		insert into goodsinfo values(0, #{gname}, #{gno}, #{price}, #{intro}, #{balance}, #{pics}, #{unit}, 
+		#{qperied}, #{weight}, #{descr}, #{status})
+	</insert>
+
+	<update id="update" parameterType="GoodsInfo">
+		update goodsinfo set gname=#{gname}, tno=#{tno}, price=#{price}, intro=#{intro}, balance=#{balance}, pics=#{pics}, 
+		unit=#{unit}, qperied=#{qperied}, weight=#{weight}, descr=#{descr} where gno=#{gno}
+	</update>
+
+	<select id="findByGid" resultType="GoodsInfo" parameterType="string">
+		select gno, gname, g.tno, tname, price, balance, unit, qperied, weight, g.status, intro, pics, descr 
 		from goodsinfo g, goodstype t  where g.tno = t.tno and gno=#{_parameter}
- 	</select>
- 	
- 	<select id="findByPage" resultType="GoodsType" parameterType="map">
- 		select gno, gname, g.tno, tname, price, balance, unit, qperied, weight, g.status from goodsinfo g, goodstype t where g.tno=t.tno 
- 		<if test="gname != null and gname != ''">
- 			 and gname like concat('%', #{gname}, '%')
- 		</if>
- 		
- 		<if test="tno!=null and tno!=''">
- 			 and g.tno=#{tno}
- 		</if>
- 		
- 		<if test="start!=null and start!=''">
- 			 and balance>=#{start}
- 		</if>
- 		
- 		<if test="end!=null and end!=''">
- 			 and balance &lt;=#{end}
- 		</if>
- 		
-		order by gno desc limit #{page},#{rows}
- 	</select>
- 	
- 	<select id="total" resultType="int" parameterType="map">
- 		select count(gno) from goodsinfo 
- 		<where>
- 			<if test="gname != null and gname != ''">
- 			 and gname like concat('%', #{gname}, '%')
- 			</if>
- 		
- 			<if test="tno!=null and tno!=''">
- 			 	and g.tno=#{tno}
- 			</if>
- 		
- 			<if test="start!=null and start!=''">
- 			 	and balance>=#{start}
- 			</if>
- 		
- 			<if test="end!=null and end!=''">
- 			 	and balance &lt;=#{end}
- 			</if>
- 		</where>
- 	</select>
- 	
- 	<select id="finds" resultType="GoodsInfo" parameterType="map">
- 		select gno, gname, tno, price, weight, pics pic from goodsinfo where status !=0
- 		<if test="tno!=null and tno!=''">
- 			 and g.tno=#{tno}
- 		</if>
- 			
- 		<if test="gname != null and gname != ''">
- 			 and gname like concat('%', #{gname}, '%')
- 		</if>
- 		
- 		<if test="sprice!=null and sprice!=''">
- 			 and price>=#{sprice}
- 		</if>
- 		
- 		<if test="eprice!=null and eprice!=''">
- 			 and price &lt; = #{eprice}
- 		</if>
- 		
- 		<choose>
- 			<when test="order !=null and order !=''">
- 				order by price #{order}
- 			</when>
- 			<otherwise>
- 				order by gno desc
- 			</otherwise>
- 		</choose>
- 		limit #{page} ,#{rows}
- 	</select>
- 	
- 	<select id="totals" resultType="int" parameterType="map">
- 		select count(gno) from goodsinfo where status !=0
- 		<if test="tno!=null and tno!=''">
- 			 and g.tno=#{tno}
- 		</if>
- 			
- 		<if test="gname != null and gname != ''">
- 			 and gname like concat('%', #{gname}, '%')
- 		</if>
- 		
- 		<if test="sprice!=null and sprice!=''">
- 			 and price>=#{sprice}
- 		</if>
- 		
- 		<if test="eprice!=null and eprice!=''">
- 			 and price &lt; = #{eprice}
- 		</if>
- 	</select>
- 	
- 	<!-- 对外提供服务的 -->
- 	<select id="listForGno" resultType="ProductInfoDTO">
- 		select g.gno,gname,tno,price,balance,unit,qperied.weight,status,intro,pics pic from goodsinfo
- 		<foreach collection="list" open=" where gno in(" separator="," close=")" item="item">
- 			#{item}
- 		</foreach>
- 	</select>
- 	
- 	<select id="listForGno" resultType="ProductInfoDTO">
- 		select g.gno,gname,tno,price,balance,unit,qperied.weight,status,intro,pics pic,num from goodsinfo g, cartinfo c where g.gno=c.gno
- 		<foreach collection="list" open=" and cno in(" separator="," close=")" item="item">
- 			#{item}
- 		</foreach>
- 	</select>
- </mapper>
- 
+	</select>
+
+	<select id="findByPage" resultType="GoodsInfo" parameterType="map">
+		select gno, gname, g.tno, tname, price, balance, unit, pics pic, qperied, weight, g.status from goodsinfo g, goodstype t where g.tno=t.tno
+		<if test="gname != null and gname != ''">
+			and gname like concat('%', #{gname}, '%')
+		</if>
+		
+		<if test="tno != null and tno != ''">
+			and g.tno=#{tno}
+		</if>
+		
+		<if test="start != null and start != ''">
+			and balance >= #{start}
+		</if>
+		
+		<if test="end != null and end != ''">
+			and balance &lt;= #{end}
+		</if>
+		
+		order by gno desc limit #{page}, #{rows}
+	</select>
+	
+	<select id="total" resultType="int" parameterType="map">
+		select count(gno) from goodsinfo
+		<where>
+			<if test="gname != null and gname != ''">
+				and gname like concat('%', #{gname}, '%')
+			</if>
+			
+			<if test="tno != null and tno != ''">
+				and tno=#{tno}
+			</if>
+			
+			<if test="start != null and start != ''">
+				and balance >= #{start}
+			</if>
+			
+			<if test="end != null and end != ''">
+				and balance &lt;= #{end}
+			</if>
+		</where>
+	</select>
+	
+	<select id="finds" resultType="GoodsInfo" parameterType="map">
+		select gno, gname, tno, price, weight, pics pic from goodsinfo where status !=0
+		<if test="tno != null and tno != ''">
+			and tno = #{tno}
+		</if>
+		
+		<if test="gname != null and gname != ''">
+			and gname like concat('%', #{gname}, '%')
+		</if>
+		
+		<if test="sprice != null and sprice != ''">
+			and price >= #{sprice}
+		</if>
+		
+		<if test="eprice != null and eprice != ''">
+			and price &lt;= #{eprice}
+		</if>
+		
+		<choose>
+			<when test="order != null and order != ''">
+				order by price #{order}
+			</when>
+			<otherwise>
+				order by gno desc 
+			</otherwise>
+		</choose>
+		limit #{page}, #{rows}
+	</select>
+	
+	<select id="totals" resultType="int" parameterType="map">
+		select count(gno) from goodsinfo where status !=0
+		<if test="tno != null and tno != ''">
+			and tno = #{tno}
+		</if>
+		
+		<if test="gname != null and gname != ''">
+			and gname like concat('%', #{gname}, '%')
+		</if>
+		
+		<if test="sprice != null and sprice != ''">
+			and price >= #{sprice}
+		</if>
+		
+		<if test="eprice != null and eprice != ''">
+			and price &lt;= #{eprice}
+		</if>
+	</select>
+	
+	<!-- 对外提供服务的 -->
+	<select id="listForGno" resultType="ProductInfoDTO">
+		select gno, gname, tno, price, balance, unit, qperied, weight, status, intro, pics pic from goodsinfo
+		<foreach collection="list" open=" where gno in(" separator="," close=")" item="item">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="listForCno" resultType="ProductInfoDTO">
+		select g.gno, gname, tno, price, balance, unit, qperied, weight, status, intro, pics pic, num from goodsinfo g, cartinfo c where g.gno=c.gno
+		<foreach collection="list" open=" and cno in(" separator="," close=")" item="item">
+			#{item}
+		</foreach>
+	</select>
+	
+	<!-- 扣库存的方法 -->
+	<update id="buckleStock">
+		update goodsinfo set
+		<trim prefix="balance = balance - case" suffix="end">
+			<foreach collection="list" item="item">
+				when gno = #{item.gno} then #{item.nums}
+			</foreach>
+		</trim>
+		<where>
+			gno in
+			<foreach collection="list" item="item" open="(" close=")" separator=",">
+				#{item.gno}
+			</foreach>
+		</where>
+	</update>
+	
+	<select id="findByCart" resultType="CartInfoDTO">
+		select gno, price, balance nums from goodsinfo
+		<foreach collection="list" open=" where gno in(" close=")" separator="," item="item">
+			#{item}
+		</foreach>
+	</select>
+</mapper>

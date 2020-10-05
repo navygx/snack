@@ -1,0 +1,70 @@
+spring:
+   profiles:
+      active: dev-6655
+
+---
+server:
+   port: 6655
+   
+spring:
+   profiles: dev-6655
+   application: 
+      name: order-server
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/snack_order?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: root
+   http:
+      encoding: 
+         charset: utf-8
+         force: true
+         enabled: true
+         
+   mail:
+      protocol: smtp
+      username: 3155822880@qq.com
+      password: GX3155822880
+      port: 465
+      host: smtp.qq.com
+      properties:
+         mail:
+            smtp:
+               auth: true
+               timeout: 2500
+               ssl:
+                  enable: true
+                
+mybatis:
+   mapper-locations: mapper/*Mapper.xml
+   type-aliases-package: com.yc.snack.order.bean
+   
+hystrix:
+   command:
+   #默认超时时间为2秒，不配置，默认是1秒
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 2000
+      list: 
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 1000
+
+feign:
+   hystrix:
+      enable: true
+   
+eureka:
+   client: 
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6611/eureka
+   
+logging:
+   level:
+      #com.yc.snack.order.mapper: debug
+      #root: debug
+      org.springframework.cloud.netflix.feign: debug

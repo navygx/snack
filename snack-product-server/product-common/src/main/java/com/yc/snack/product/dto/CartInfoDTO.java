@@ -1,31 +1,46 @@
 package com.yc.snack.product.dto;
 
+/**
+ * 购物车信息传输对象
+ * company 源辰信息
+ * @author navy
+ * @date 2020年10月2日
+ * Email haijunzhou@hnit.edu.cn
+ */
 public class CartInfoDTO {
 	private String gno;
 	private Integer nums;
 	private Double price;
+	
 	@Override
 	public String toString() {
-		return "CartInfoDTO [gno=" + gno + ", nums=" + nums + ", price=" + price + "]";
+		return "CrartInfoDTO [gno=" + gno + ", nums=" + nums + ", price=" + price + "]";
 	}
+
 	public String getGno() {
 		return gno;
 	}
+
 	public void setGno(String gno) {
 		this.gno = gno;
 	}
+
 	public Integer getNums() {
 		return nums;
 	}
+
 	public void setNums(Integer nums) {
 		this.nums = nums;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -35,6 +50,7 @@ public class CartInfoDTO {
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -61,5 +77,4 @@ public class CartInfoDTO {
 			return false;
 		return true;
 	}
-
-}
+}	

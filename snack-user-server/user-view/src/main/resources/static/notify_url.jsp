@@ -1,5 +1,5 @@
-<%@page import="com.yc.snacknet.biz.IOrderInfoBiz"%>
-<%@page import="com.yc.snacknet.biz.impl.OrderInfoBizImpl"%>
+<%@page import="com.yc.snack.order.IOrderInfoBiz"%>
+<%@page import="com.yc.snack.order.OrderInfoBizImpl"%>
 <%@page import="com.yc.snack.order.controller.AlipayConfig"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.util.*"%>

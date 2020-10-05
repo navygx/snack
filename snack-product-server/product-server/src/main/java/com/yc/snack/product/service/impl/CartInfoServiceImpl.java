@@ -11,12 +11,19 @@ import com.yc.snack.product.bean.CartInfo;
 import com.yc.snack.product.mapper.ICartInfoMapper;
 import com.yc.snack.product.service.ICartInfoService;
 import com.yc.snack.product.util.StringUtil;
+import com.yc.snack.product.vo.CartInfoVO;
 
+/**
+ * company 源辰信息
+ * @author navy
+ * @date 2020年8月23日
+ * Email haijunzhou@hnit.edu.cn
+ */
 @Service
 public class CartInfoServiceImpl implements ICartInfoService{
 	@Autowired
 	private ICartInfoMapper cartInfoMapper;
-	
+
 	@Override
 	public List<CartInfo> finds(String mno) {
 		if (StringUtil.checkNull(mno)) {
@@ -26,36 +33,11 @@ public class CartInfoServiceImpl implements ICartInfoService{
 	}
 
 	@Override
-	public List<Map<String, String>> info(String mno) {
-		if (StringUtil.checkNull(mno)) {
-			return Collections.emptyList();
-		}
-		return cartInfoMapper.info(mno);
-	}
-
-	@Override
-	public List<CartInfo> findByCno(String cnos) {
-		if (StringUtil.checkNull(cnos)) {
-			return Collections.emptyList();
-		}
-		return cartInfoMapper.findByCno(cnos.split(","));
-	}
-
-	@Override
-	public int updateNum(Map<String,Object> map) {
+	public int updateNum(Map<String, Object> map) {
 		if (StringUtil.checkNull(String.valueOf(map.get("cno")))) {
 			return -1;
 		}
-		
 		return cartInfoMapper.updateNum(map);
-	}
-
-	@Override
-	public int delete(String[] cnos) {
-		if (StringUtil.checkNull(cnos)) {
-			return -1;
-		}
-		return cartInfoMapper.delete(cnos);
 	}
 
 	@Override
@@ -65,5 +47,28 @@ public class CartInfoServiceImpl implements ICartInfoService{
 		}
 		return cartInfoMapper.add(cf);
 	}
-	
+
+	@Override
+	public List<CartInfoVO> findByCnos(String[] cnos) {
+		if (cnos == null || cnos.length <= 0) {
+			return Collections.emptyList();
+		}
+		return cartInfoMapper.findByCnos(cnos);
+	}
+
+	@Override
+	public int delete(List<String> cnos) {
+		if (cnos == null || cnos.isEmpty()) {
+			return -1;
+		}
+		return cartInfoMapper.delete(cnos);
+	}
+
+	@Override
+	public List<CartInfoVO> findByGno(String mno) {
+		if (StringUtil.checkNull(mno)) {
+			return Collections.emptyList();
+		}
+		return cartInfoMapper.findByGno(mno);
+	}
 }

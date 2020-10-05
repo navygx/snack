@@ -21,7 +21,7 @@ import com.yc.snack.product.bean.GoodsInfo;
 import com.yc.snack.product.enums.ResultEnum;
 import com.yc.snack.product.service.IGoodsInfoService;
 import com.yc.snack.product.util.StringUtil;
-import com.yc.snack.product.vo.ResultVo;
+import com.yc.snack.product.vo.ResultVO;
 
 @RestController
 @RequestMapping("/goods")
@@ -30,13 +30,13 @@ public class GoodsInfoController {
 	private IGoodsInfoService goodsInfoService;
 	
 	@PostMapping("/findByFirst")
-	public ResultVo findByFirst(@RequestParam Map<String,Object> map) {
-		return new ResultVo(ResultEnum.SUCCESS,goodsInfoService.findByFirst(map));
+	public ResultVO findByFirst(@RequestParam Map<String,Object> map) {
+		return new ResultVO(ResultEnum.SUCCESS,goodsInfoService.findByFirst(map));
 	}
 	
 	@GetMapping("/finds")
-	public ResultVo finds(@RequestParam Map<String,Object> map) {
-		return new ResultVo(ResultEnum.SUCCESS,goodsInfoService.finds(map));
+	public ResultVO finds(@RequestParam Map<String,Object> map) {
+		return new ResultVO(ResultEnum.SUCCESS,goodsInfoService.finds(map));
 	}
 	
 	@PostMapping("/findByPage")
@@ -81,7 +81,7 @@ public class GoodsInfoController {
 	}
 	
 	@PostMapping("/add")
-	public ResultVo addGoods(@RequestParam("picinfo") MultipartFile[] pics,GoodsInfo gf,HttpServletRequest request) {
+	public ResultVO addGoods(@RequestParam("picinfo") MultipartFile[] pics,GoodsInfo gf,HttpServletRequest request) {
 		if(pics != null && pics.length>0 && !pics[0].isEmpty()) {
 			try {
 				String savePath="pics";
@@ -118,8 +118,8 @@ public class GoodsInfoController {
 		
 		int result=goodsInfoService.add(gf);
 		if(result>0) {
-			return new ResultVo(ResultEnum.SUCCESS);
+			return new ResultVO(ResultEnum.SUCCESS);
 		}
-		return new ResultVo(ResultEnum.ERROR);
+		return new ResultVO(ResultEnum.ERROR);
 	}
 }

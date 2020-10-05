@@ -2,8 +2,6 @@ package com.yc.snack.product.bean;
 
 import java.io.Serializable;
 
-import com.yc.snack.product.util.StringUtil;
-
 /**
  * 购物车信息
  * company 源辰信息
@@ -17,17 +15,10 @@ public class CartInfo implements Serializable{
 	private Integer mno;
 	private Integer gno;
 	private Integer num;
-	
-	private String gname; // 商品名称
-	private double price; // 价格
-	private String pics; // 图片
-	private String unit; // 单位
-	private String weight; // 净重
 
 	@Override
 	public String toString() {
-		return "CartInfo [cno=" + cno + ", mno=" + mno + ", gno=" + gno + ", num=" + num + ", gname=" + gname
-				+ ", price=" + price + ", pics=" + pics + ", unit=" + unit + ", weight=" + weight + "]";
+		return "CartInfo [cno=" + cno + ", mno=" + mno + ", gno=" + gno + ", num=" + num + "]";
 	}
 
 	public String getCno() {
@@ -60,50 +51,6 @@ public class CartInfo implements Serializable{
 
 	public void setNum(Integer num) {
 		this.num = num;
-	}
-
-	public String getGname() {
-		return gname;
-	}
-
-	public void setGname(String gname) {
-		this.gname = gname;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String getPics() {
-		return pics;
-	}
-
-	public void setPics(String pics) {
-		if (!StringUtil.checkNull(pics)) {
-			this.pics= pics.split(",")[0];
-			return;
-		}
-		this.pics = pics;
-	}
-
-	public String getUnit() {
-		return unit;
-	}
-
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
-	public String getWeight() {
-		return weight;
-	}
-
-	public void setWeight(String weight) {
-		this.weight = weight;
 	}
 
 	public CartInfo(String cno, Integer mno, Integer gno, Integer num) {

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yc.snack.product.bean.GoodsType;
 import com.yc.snack.product.enums.ResultEnum;
 import com.yc.snack.product.service.IGoodsTypeService;
-import com.yc.snack.product.vo.ResultVo;
+import com.yc.snack.product.vo.ResultVO;
+
 
 @RestController
 @RequestMapping("/types")
@@ -19,12 +20,12 @@ public class GoodsTypesController {
 	private IGoodsTypeService goodsTypeService;
 	
 	@GetMapping("/finds")
-	public ResultVo finds() {
+	public ResultVO finds() {
 		List<GoodsType> list=goodsTypeService.finds();
 		if(list==null || list.isEmpty()) {
-			return new ResultVo(ResultEnum.DATA_NULL);
+			return new ResultVO(ResultEnum.DATA_NULL);
 		}
-		return new ResultVo(ResultEnum.SUCCESS,list);
+		return new ResultVO(ResultEnum.SUCCESS,list);
 	}
 	
 	@GetMapping("/findAll")

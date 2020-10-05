@@ -87,14 +87,32 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
+    
+    <!-- 从配置中心读取配置文件的依赖包 -->
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-config</artifactId>
+  	</dependency>
   	
-  	<!-- spring boot session管理 
+  	<!-- 提供降级和熔断服务-->
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+  	</dependency> 
+  	
+  	<!-- 仪表盘，监控降级和熔断的-->
+  	<dependency>
+  		<groupId>org.springframework.cloud</groupId>
+  		<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+  	</dependency> 
+  	
+  	<!-- spring boot session管理 -->
   	<dependency>
   		<groupId>org.springframework.session</groupId>
   		<artifactId>spring-session-data-redis</artifactId>
-  	</dependency>-->
+  	</dependency>
   	
-  	<!-- 使用zipkin的时候总是会报一些redis连接超时的错误，因为是默认带的lettuce，我们改成jedis访问 
+  	<!-- 使用zipkin的时候总是会报一些redis连接超时的错误，因为是默认带的lettuce，我们改成jedis访问 -->
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -114,31 +132,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
   	<dependency>
   		<groupId>redis.clients</groupId>
   		<artifactId>jedis</artifactId>
-  	</dependency>-->
+  	</dependency>
   	
-  	<!-- 从配置中心读取配置文件的依赖包 
-  	<dependency>
-  		<groupId>org.springframework.cloud</groupId>
-  		<artifactId>spring-cloud-starter-config</artifactId>
-  	</dependency>-->
-  	
-  	<!-- 仪表盘，监控降级和熔断的
-  	<dependency>
-  		<groupId>org.springframework.cloud</groupId>
-  		<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
-  	</dependency> -->
-  	
-  	<!-- feign,服务之间调用用的
+  	<!-- feign,服务之间调用用的-->
   	<dependency>
   		<groupId>org.springframework.cloud</groupId>
   		<artifactId>spring-cloud-starter-openfeign</artifactId>
-  	</dependency> -->
+  	</dependency> 
   	
-  	<!-- 消息中间件 
+  	<!-- 消息中间件 -->
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-amqp</artifactId>
-  	</dependency>-->
+  	</dependency>
   	
   	<!-- stream 为微服务应用构建消息驱动能力框架 
   	<dependency>

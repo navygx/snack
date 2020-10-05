@@ -24,11 +24,14 @@ spring:
                 
 mybatis:
    mapper-locations: mapper/*Mapper.xml
-   type-aliases-package: com.yc.snack.product.bean,com.yc.snack.product.dto
+   type-aliases-package: com.yc.snack.product.bean,com.yc.snack.product.dto，com.yc.snack.product.vo
    
 eureka:
    client: 
       service-url:
          defaultZone: http://navy:123321@127.0.0.1:6611/eureka
    
-      
+logging: 
+   level:
+      com.yc.snack.product.mapper: debug
+      #org.springframework.cloud.netflix.feign: dubug    

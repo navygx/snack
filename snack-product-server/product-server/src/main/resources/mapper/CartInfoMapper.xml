@@ -2,35 +2,36 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
-  <mapper namespace="com.yc.snack.propduct.mapper.ICartInfoMapper">
- 	<select id="finds" parameterType="string" resultType="CartInfo">
- 		select cno, c.gno, num, price, pics, gname, unit, weight from goodsinfo g, cartinfo c where c.gno=g.gno and mno=#{_parameter}
- 	</select>
- 	
- 	<select id="info" parameterType="string" resultType="map">
- 		select cno, gno from cartinfo where mno=#{_parameter}
- 	</select>
- 	
- 	<update id="updateNum" parameterType="map" >
- 		update cartinfo set num = num + #{num} where cno = #{cno}
- 	</update>
- 	
- 	<insert id="add" parameterType="CartInfo">
- 		insert into cartinfo values(#{cno}, #{mno}, #{gno}, #{num})
- 	</insert>
- 	
- 	<delete id="delete">
- 		delete from cartinfo where 1=0
- 		<foreach collection="array" open=" or cno in(" close=")" separator="," item="item">
- 			#{item}
- 		</foreach>
- 	</delete>
- 	
- 	<select id="findByCno" resultType="CartInfo">
- 		select cno, c.gno, num, price, pics, gname, unit, weight from goodsinfo g, cartinfo c where c.gno=g.gno 
- 		<foreach collection="array" open=" and cno in(" close=")" separator="," item="item">
- 			#{item}
- 		</foreach>
- 	</select>
- </mapper>
+
+<mapper namespace="com.yc.snack.product.mapper.ICartInfoMapper">
+	<select id="finds" parameterType="string" resultType="CartInfo">
+		select cno, gno, num from cartinfo where mno=#{_parameter}
+	</select>
+	
+	<select id="findByGno" parameterType="string" resultType="CartInfoVO">
+		select cno, c.gno, num, price, pics, gname, unit, weight from goodsinfo g, cartinfo c where c.gno=g.gno and mno=#{_parameter}
+	</select>
+	
+	<select id="findByCno" resultType="CartInfoVO">
+		select cno, c.gno, num, price, pics, gname, unit, weight from goodsinfo g, cartinfo c where c.gno=g.gno
+		<foreach collection="array" open=" and cno in(" close=")" separator="," item="item">
+			#{item}
+		</foreach>
+	</select>
+	
+	<update id="updateNum" parameterType="map">
+		update cartinfo set num = num + #{num} where cno = #{cno}
+	</update>
+	
+	<delete id="delete">
+		delete from cartinfo where 1 = 0
+		<foreach collection="list" open=" or cno in(" close=")" separator="," item="item">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<insert id="add" parameterType="CartInfo">
+		insert into cartinfo values(#{cno}, #{mno}, #{gno}, #{num})
+	</insert>
+	
+</mapper>

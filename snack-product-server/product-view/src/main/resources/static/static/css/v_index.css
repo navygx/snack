@@ -1,0 +1,261 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background: #EFEFEF;
+	overflow-x: hidden;
+	padding: 0px;
+	margin:0px auto;
+	width: 100%;
+}
+
+*{
+	padding: 0px;
+	margin:0px auto;
+}
+
+a {
+	text-decoration: none;
+	color: #999;
+}
+
+/*顶部处理*/
+.htitle, .search_left, .buycart, .view_title, .page_info, .pagination{
+	display: none;
+}
+
+#header {
+	width: 100%;
+	background-color: #9915C8;	
+}
+
+#header a {
+	color: #FFF;	
+}
+
+.search, .search_right {
+	width: 100%;
+}
+
+.search_top {
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+}
+
+.search_div {
+	margin: 2% 5%; 
+	height: 42px;
+}
+
+.search-ipt {
+	width: 80%;
+	height: 38px;
+	border-radius: 4px;
+	float: left;
+	padding-left: 2px;
+}
+
+.search-btn {
+	width: 20%;
+	height: 38px;
+	border: 0px;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+	float: left;
+	background: #37ab40 url(../images/icons.png) no-repeat 5px -338px;
+}
+
+.search_item {
+	display: block;
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.search_item > a {
+	padding: 5px 10px;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.selected {
+	background-color: #771398;
+}
+
+.search_item > a:hove {
+	background-color: #771398;
+}
+
+/* 头部图片轮播 */
+.slide {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+
+.slide img {
+	width: 100%;
+	height: 100%;
+}
+
+.slide .slide_pics li{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	left:0;
+	top:0;
+}
+
+
+
+/*小圆点*/
+.points{
+	width:110%;
+	height:11px;
+	position:absolute;
+	left:0px;
+	top:250px;
+	text-align:center;
+}
+
+.points li{
+	display:inline-block;/*行内块 既能设置宽高 也能在一行显示*/
+	width:11px;
+	height:11px;
+	margin:0 5px;
+	background:#9f9f9f;
+	border-radius:50%;/*圆形*/
+	cursor:pointer;/*手型*/
+}
+
+.points li.active{
+	background-color:#ececec;
+}
+
+/*商品区域*/
+.view_goods {
+	margin: 10px 0.5%;
+	width: 99%;
+}
+
+.hot_box {
+	float: left;
+	width: 32.83%;
+	height: 220px;
+	list-style-type: none;
+	text-align: center;
+	margin-bottom: 10px;
+	background-color: #FFF;
+	margin:0px 0.25% 10px 0.25%;
+}
+
+.hot_box:hover {
+	outline: 1px solid red;
+}
+
+.hot_warp>span {
+	overflow: hidden;
+	width: 100%;
+	/* 单行超出显示 ... */
+	height: 18px;
+	line-height: 18px; 
+	white-space:nowrap; /* 规定段落中的文本不进行换行： */
+	text-overflow: ellipsis; /* 文本超出范围省略 */
+	display: inline-block; 
+}
+
+.hot_box img {
+	width: 90%;
+	margin-left: 5%;
+	height: 120px;
+}
+
+.price {
+	display: block;
+	text-align:center;
+	font-size: 16px;
+	color: red;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.view_info>span:nth-child(2) {
+	float: left;
+	margin-left: 10px;
+}
+
+.view_info>span:last-child {
+	float: right;
+	margin-right: 10px;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	background:url(../images/shop_cart.png) no-repeat center center;
+}
+
+
+/* 底部导航 */
+.bottom_nav {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background-color: #FFF;
+	width: 100%;
+	height: 60px;
+}
+
+.bottom_nav>a{
+	width: 20%;
+	height: 100%;
+	float: left;
+	display: block;
+	text-align: center;
+}
+
+.bottom_nav>a>span{
+	display: block;
+	width: 25px;
+	height: 25px;
+	margin: 2px auto;
+}
+
+.bottom_nav>a:first-child>span {
+	background:url(../images/home.png) no-repeat center center;
+}
+
+.bottom_nav>a:nth-child(2)>span {
+	background:url(../images/menu.png) no-repeat center center;
+}
+
+.bottom_nav>a:nth-child(3)>span {
+	background:url(../images/message.png) no-repeat center center;
+}
+
+.bottom_nav>a:nth-child(4)>span {
+	background:url(../images/cart.png) no-repeat center center;
+}
+
+.bottom_nav>a:last-child>span {
+	background:url(../images/me.png) no-repeat center center;
+}
+
+.bottom_nav>a:first-child:hover>span {
+	background-image:url(../images/home1.png);
+}
+
+.bottom_nav>a:nth-child(2):hover>span {
+	background-image:url(../images/menu1.png);
+}
+
+.bottom_nav>a:nth-child(3):hover>span {
+	background-image:url(../images/message1.png);
+}
+
+.bottom_nav>a:nth-child(4):hover>span {
+	background-image:url(../images/cart1.png);
+}
+
+.bottom_nav>a:last-child:hover>span {
+	background-image:url(../images/me1.png);
+}
